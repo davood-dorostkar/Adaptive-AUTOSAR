@@ -1,5 +1,4 @@
-#ifndef ARASERVER_H
-#define ARASERVER_H
+#pragma once
 
 namespace ara
 {
@@ -16,7 +15,6 @@ namespace ara
         Server::Server() {}
         Server::~Server() {}
 
-    } // namespace rest
+    }
 
-} // namespace ara
-#endif
+}

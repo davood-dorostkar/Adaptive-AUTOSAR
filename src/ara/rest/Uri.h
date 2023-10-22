@@ -12,6 +12,7 @@ namespace ara
         class Uri
         {
         public:
+            std::string path;
             Uri(const std::string &path) noexcept : path(path) {}
 
             class Builder
@@ -26,7 +27,6 @@ namespace ara
             };
 
         private:
-            std::string path;
             std::string percentEncode(const std::string &input) noexcept; // must be changed regarding SWS_REST_01103
             std::string percentDecode(const std::string &input) noexcept;
         };
