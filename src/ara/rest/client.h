@@ -16,12 +16,16 @@ namespace ara
         {
         private:
         public:
-            Event();
-            ~Event();
+            Event(const Event &) = delete;
+            Event &operator=(const Event &) = delete;
+            Task<bool> Unsubscribe();
+            Task<bool> Resubscribe();
+            const Uri &GetUri() const noexcept;
+            SubscriptionState GetSubscriptionState() const noexcept;
+            friend bool operator==(const Event &a, const Event &b) noexcept;
+            friend bool operator!=(const Event &a, const Event &b) noexcept;
+            friend bool operator<(const Event &a, const Event &b) noexcept;
         };
-
-        Event::Event() {}
-        Event::~Event() {}
 
         class Reply
         {
@@ -63,9 +67,6 @@ namespace ara
                                   const Function<SubscriptionStateHandlerType> &state = {});
             ara::core::ErrorCode GetError() const;
             void ObserveError(const Function<void(ara::core::ErrorCode)> &hnd);
-            ~Client();
         };
-
-        Client::~Client() {}
     }
 }

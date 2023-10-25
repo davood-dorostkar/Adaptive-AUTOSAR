@@ -11,14 +11,7 @@ namespace ara
             {
             private:
             public:
-                Value();
-                ~Value();
             };
-
-            Value::Value() {}
-            Value::~Value() {}
-
         }
-
     }
 }

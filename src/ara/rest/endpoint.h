@@ -23,6 +23,6 @@ namespace ara
             kTriggered = 1u << 0,
             kPeriodic = 1u << 1
         };
-        using InstanceIdentifier = ara::core::StringView;
+        using InstanceIdentifier = core::StringView;
     }
 }
