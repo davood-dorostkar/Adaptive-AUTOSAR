@@ -1,7 +1,5 @@
 #pragma once
 #include "value.h"
-#include "allocator.h"
-#include "core/string_view.h"
 #include "pointer.h"
 
 namespace ara
@@ -10,18 +8,18 @@ namespace ara
     {
         namespace ogm
         {
-            class String : public Value
+            class Real : public Value
             {
             private:
             public:
-                using SelfType = String;
+                using SelfType = Real;
                 using ParentType = Value;
-                using ValueType = core::StringView;
+                using ValueType = long double;
                 Node *GetParent() noexcept;
                 const Node *GetParent() const noexcept;
                 bool HasParent() const noexcept;
-                ValueType GetValue() const;
-                void SetValue(const ValueType &v);
+                ValueType GetValue() const noexcept;
+                void SetValue(ValueType v) noexcept;
 
                 template <typename... Ts>
                 static Pointer<SelfType> Make(Ts &&...ts);
@@ -29,8 +27,7 @@ namespace ara
                 template <typename... Ts>
                 static Pointer<SelfType> Make(Allocator *alloc, Ts &&...ts);
 
-                String(ValueType value = ValueType{});
-                String(Allocator *alloc, ValueType value = ValueType{});
+                Real(ValueType value = ValueType{});
             };
         }
     }

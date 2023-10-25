@@ -7,6 +7,8 @@
 #include "uri.h"
 #include "types.h"
 #include "function.h"
+#include "header.h"
+#include "string.h"
 
 namespace ara
 {
@@ -31,23 +33,19 @@ namespace ara
         {
         private:
         public:
-            Reply();
-            ~Reply();
+            Reply(const Reply &) = delete;
+            Reply &operator=(const Reply &) = delete;
+            ReplyHeader const &GetHeader() const;
+            Task<ogm::Object const &> GetObject() const;
+            Task<Pointer<ogm::Object>> ReleaseObject();
+            Task<Pointer<ogm::String>> ReleaseBinary(); // autosar document seems wrong; changed
         };
-
-        Reply::Reply() {}
-        Reply::~Reply() {}
 
         class Request
         {
         private:
         public:
-            Request();
-            ~Request();
         };
-
-        Request::Request() {}
-        Request::~Request() {}
 
         class Client
         {

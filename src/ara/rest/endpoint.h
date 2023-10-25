@@ -23,6 +23,15 @@ namespace ara
             kTriggered = 1u << 0,
             kPeriodic = 1u << 1
         };
+        enum class RequestMethod : std::uint32_t
+        {
+            kGet = 1 << 0,
+            kPost = 1 << 1,
+            kPut = 1 << 2,
+            kDelete = 1 << 3,
+            kOptions = 1 << 4,
+            kHead = 1 << 5
+        };
         using InstanceIdentifier = core::StringView;
     }
 }
