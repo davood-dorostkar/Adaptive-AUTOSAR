@@ -32,6 +32,11 @@ namespace ara
             kOptions = 1 << 4,
             kHead = 1 << 5
         };
+        enum class StartupPolicy : std::uint32_t
+        {
+            kDetached,
+            kAttached
+        };
         using InstanceIdentifier = core::StringView;
     }
 }

@@ -8,7 +8,7 @@
 #include "types.h"
 #include "function.h"
 #include "header.h"
-#include "string.h"
+#include "core/string.h"
 
 namespace ara
 {
@@ -38,13 +38,22 @@ namespace ara
             ReplyHeader const &GetHeader() const;
             Task<ogm::Object const &> GetObject() const;
             Task<Pointer<ogm::Object>> ReleaseObject();
-            Task<Pointer<ogm::String>> ReleaseBinary(); // autosar document seems wrong; changed
+            Task<Pointer<core::String>> ReleaseBinary();
         };
 
         class Request
         {
         private:
         public:
+            Request(const Request &) = delete;
+            Request &operator=(const Request &) = delete;
+            Request(RequestMethod met, const Uri &uri);
+            Request(RequestMethod met, Uri &&uri);
+            Request(RequestMethod met, const Uri &uri, const Pointer<ogm::Object> &obj);
+            Request(RequestMethod met, const Uri &uri, Pointer<ogm::Object> &&obj);
+            Request(RequestMethod met, Uri &&uri, const Pointer<ogm::Object> &obj);
+            Request(RequestMethod met, Uri &&uri, Pointer<ogm::Object> &&obj);
+            Request(RequestMethod met, const Uri &uri, Pointer<core::String> &&bin);
         };
 
         class Client
