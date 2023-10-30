@@ -6,6 +6,6 @@ namespace ara
     namespace rest
     {
         template <typename T>
-        using Task = ara::core::Future<T>;
+        using Task = core::Future<T>;
     }
 }

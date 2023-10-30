@@ -1,5 +1,11 @@
 #pragma once
 #include <stddef.h>
+#include <type_traits>
+#include "core/string_view.h"
+#include "core/string.h"
+#include "allocator.h"
+#include "iterator.h"
+#include "uuid.h"
 
 namespace ara
 {
@@ -140,6 +146,41 @@ namespace ara
                 kAll = ~std::underlying_type<Part>::type{0}
             };
             static constexpr std::size_t LENGTH_MAX = 2048;
+            friend constexpr Part operator|(Part a, Part b) noexcept;
+            Uri() noexcept = default;
+            bool HasScheme() const noexcept;
+            core::StringView GetScheme() const noexcept(std::is_nothrow_constructible<core::StringView>::value);
+            bool HasUserInfo() const noexcept;
+            core::StringView GetUserinfo() const noexcept(std::is_nothrow_constructible<core::StringView>::value);
+            bool HasHost() const noexcept;
+            core::StringView GetHost() const noexcept(std::is_nothrow_constructible<core::StringView>::value);
+            bool HasPort() const noexcept;
+            int GetPort() const noexcept;
+            bool HasPath() const noexcept;
+            const Path &GetPath() const noexcept;
+            bool HasQuery() const noexcept;
+            const Query &GetQuery() const noexcept;
+            bool HasFragment() const noexcept;
+            core::StringView GetFragment() const noexcept(std::is_nothrow_constructible<core::StringView>::value);
+
+            template <typename T>
+            T GetFragmentAs(T &&def = {}) const;
+
+            bool IsEmpty() const noexcept;
+            bool IsRelative() const noexcept;
+            bool isOpaque() const noexcept;
+            bool isHierarchical() const noexcept;
         };
+
+        Uri Resolve(const Uri &base, const Uri &rel, Allocator *alloc = GetDefaultAllocator());
+        Uri Normalize(const Uri &uri, Allocator *alloc = GetDefaultAllocator());
+        Uri Relativize(const Uri &base, const Uri &uri, Allocator *alloc = GetDefaultAllocator());
+        core::String ToString(const Uri &uri, Uri::Part part, bool encode, Allocator *alloc = GetDefaultAllocator());
+        core::String ToString(const Uri &uri, Uri::Part part, Allocator *alloc = GetDefaultAllocator());
+        core::String ToString(const Uri &uri, Allocator *alloc = GetDefaultAllocator());
+        core::String ToString(Uri &&uri, Uri::Part part, bool encode, Allocator *alloc = GetDefaultAllocator());
+        core::String ToString(Uri &&uri, Uri::Part part, Allocator *alloc = GetDefaultAllocator());
+        core::String ToString(Uri &&uri, Allocator *alloc = GetDefaultAllocator());
+        core::String ToString(const Uuid &uuid, Allocator *alloc = GetDefaultAllocator());
     }
 }

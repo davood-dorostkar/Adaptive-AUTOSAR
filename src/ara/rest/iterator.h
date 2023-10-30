@@ -27,5 +27,12 @@ namespace ara
             friend MoveIterator begin(const MoveIteratorRange &r);
             friend MoveIterator end(const MoveIteratorRange &r);
         };
+
+        template <typename IterT>
+        IteratorRange<IterT> MakeIteratorRange(IterT a, IterT b);
+
+        template <typename IterT>
+        MoveIteratorRange<IterT> MakeMoveIteratorRange(IterT a, IterT b);
     }
+
 }

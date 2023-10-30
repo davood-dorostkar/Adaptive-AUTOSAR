@@ -6,6 +6,8 @@
 #include "core/string_view.h"
 #include "header.h"
 #include "core/string.h"
+#include "endpoint.h"
+#include "function.h"
 
 namespace ara
 {

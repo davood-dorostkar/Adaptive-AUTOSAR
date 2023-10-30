@@ -35,6 +35,17 @@ namespace ara
             Allocator *StdAllocator<T>::resource() const noexcept;
         };
 
+        bool operator==(const Allocator &a, const Allocator &b);
+        bool operator!=(const Allocator &a, const Allocator &b);
+        Allocator *NewDeleteAllocator() noexcept;
         Allocator *GetDefaultAllocator() noexcept;
+        Allocator *SetDefaultAllocator(Allocator *a) noexcept;
+
+        template <typename T, typename U>
+        bool operator==(const StdAllocator<T> &a, const StdAllocator<U> &b) noexcept;
+
+        template <typename T, typename U>
+        bool operator!=(StdAllocator<T> const &x, StdAllocator<U> const &y) noexcept;
+
     }
 }

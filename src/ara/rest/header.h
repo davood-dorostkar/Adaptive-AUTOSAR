@@ -2,6 +2,7 @@
 #include "uri.h"
 #include "core/string_view.h"
 #include "iterator.h"
+#include "endpoint.h"
 
 namespace ara
 {

@@ -37,6 +37,8 @@ namespace ara
             kDetached,
             kAttached
         };
+        constexpr RequestMethod operator|(RequestMethod a, RequestMethod b) noexcept;
+        constexpr EventPolicy operator|(EventPolicy a, EventPolicy b) noexcept;
         using InstanceIdentifier = core::StringView;
     }
 }
