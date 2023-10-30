@@ -1,4 +1,5 @@
 #pragma once
+#include <iterator>
 
 namespace ara
 {
@@ -33,6 +34,8 @@ namespace ara
 
         template <typename IterT>
         MoveIteratorRange<IterT> MakeMoveIteratorRange(IterT a, IterT b);
+        using IteratorType = std::iterator<std::input_iterator_tag, long, long, const long *, long>; // TODO: this iterator defined randomly, define it per as your need
+        using MoveIterator = std::iterator<std::input_iterator_tag, long, long, const long *, long>; // TODO: this iterator defined randomly, define it per as your need
     }
 
 }

@@ -23,8 +23,8 @@ namespace ara
             void SetField(const core::StringView &key, const core::StringView &value) noexcept;
             std::size_t NumFields() const noexcept;
             void ClearFields() noexcept;
-            using FieldIteratorRange = IteratorRange<unspecified_iterator_type>;
-            using ConstFieldIteratorRange = IteratorRange<unspecified_iterator_type>;
+            using FieldIteratorRange = IteratorRange<IteratorType>;
+            using ConstFieldIteratorRange = IteratorRange<IteratorType>;
             FieldIteratorRange::Iterator FindField(core::StringView key) noexcept;
             ConstFieldIteratorRange::Iterator FindField(core::StringView key) const noexcept;
             FieldIteratorRange::Iterator GetFields() noexcept;
@@ -46,8 +46,8 @@ namespace ara
             void SetField(const core::StringView &key, const core::StringView &value) noexcept;
             std::size_t NumFields() const noexcept;
             void ClearFields() noexcept;
-            using FieldIteratorRange = IteratorRange<unspecified_iterator_type>;
-            using ConstFieldIteratorRange = IteratorRange<unspecified_iterator_type>;
+            using FieldIteratorRange = IteratorRange<IteratorType>;
+            using ConstFieldIteratorRange = IteratorRange<IteratorType>;
             FieldIteratorRange::Iterator FindField(const core::StringView &key) noexcept;
             ConstFieldIteratorRange::Iterator FindField(const core::StringView &key) const noexcept;
             FieldIteratorRange::Iterator GetFields() noexcept;

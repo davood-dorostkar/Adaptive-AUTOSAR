@@ -32,7 +32,7 @@ namespace ara
                     friend bool operator!=(const Segment &a, const Segment &b) noexcept;
                     friend bool operator<(const Segment &a, const Segment &b) noexcept;
                 };
-                using IteratorRange = IteratorRange<unspecified_iterator_type>;
+                using IteratorRange = IteratorRange<IteratorType>;
                 std::size_t NumSegments() const noexcept;
                 IteratorRange GetSegments() const noexcept;
                 friend bool operator==(const Path &a, const Path &b) noexcept;
@@ -59,7 +59,7 @@ namespace ara
                     template <typename T>
                     T GetValueAs(T &&def = {}) const;
                 };
-                using IteratorRange = IteratorRange<unspecified_iterator_type>;
+                using IteratorRange = IteratorRange<IteratorType>;
                 std::size_t NumParameters() const noexcept;
                 IteratorRange GetParameters() const noexcept;
                 const Parameter &GetParameter(std::size_t i) const noexcept;

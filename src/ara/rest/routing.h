@@ -28,7 +28,7 @@ namespace ara
         {
         private:
         public:
-            using MatchRange = IteratorRange<unspecified_iterator_type>;
+            using MatchRange = IteratorRange<IteratorType>;
             std::size_t Count() const noexcept;
             const Match &Get(std::size_t i) const noexcept;
             MatchRange Get() const noexcept;
@@ -39,8 +39,8 @@ namespace ara
         private:
         public:
             using RouteHandlerType = Route::Upshot(const ServerRequest &, ServerReply &, const Matches &);
-            using RouteRange = IteratorRange<unspecified_iterator_type>;
-            using ConstRouteRange = IteratorRange<unspecified_iterator_type>;
+            using RouteRange = IteratorRange<IteratorType>;
+            using ConstRouteRange = IteratorRange<IteratorType>;
             Router(Allocator *alloc = GetDefaultAllocator());
             Router(std::initializer_list<Route> routes, Allocator *alloc = GetDefaultAllocator());
             void operator()(const ServerRequest &req, ServerReply &rep) const;

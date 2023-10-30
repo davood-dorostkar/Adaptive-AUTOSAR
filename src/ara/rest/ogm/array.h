@@ -18,8 +18,8 @@ namespace ara
             public:
                 using SelfType = Array;
                 using ParentType = Value;
-                using Iterator = unspecified_iterator_type;
-                using ConstIterator = unspecified_iterator_type;
+                using Iterator = IteratorType;
+                using ConstIterator = IteratorType;
                 using ValueRange = IteratorRange<Iterator>;
                 using ConstValueRange = IteratorRange<ConstIterator>;
                 using MoveRange = IteratorRange<MoveIterator>;
